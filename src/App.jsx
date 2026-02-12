@@ -4,8 +4,9 @@ import { Button } from "./components/ui/button";
 
 // Import project images
 import quickdropImg from "./assets/images/quickdrop.jpg";
-import spaceOptimizerImg from "./assets/images/space-optimizer.jpg";
-import dersImg from "./assets/images/ders.jpg";
+import luxepropertiesImg from "./assets/images/luxeproperties.jpg";
+import weatherAppImg from "./assets/images/weatherapp.jpg";
+import intellidebtmanagerImg from "./assets/images/intellidebtmanager.jpg";
 
 export default function Portfolio() {
   const scrollToSection = (sectionId) => {
@@ -89,20 +90,20 @@ export default function Portfolio() {
           <div className="group">
             <div className="mb-6 overflow-hidden rounded-lg">
               <img 
-                src={spaceOptimizerImg} 
-                alt="Space Optimizer Preview"
+                src={luxepropertiesImg} 
+                alt="Luxe Properties Preview"
                 className="w-full transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <h3 className="text-2xl font-serif text-white mb-3">AI-Powered Space Optimizer</h3>
+            <h3 className="text-2xl font-serif text-white mb-3">Luxe Properties</h3>
             <p className="text-white/80 font-light mb-4">
-              Web app that auto-generates optimized layouts for small spaces.
+              A Luxury real estate platform built with Django and Next.js.
             </p>
             <div className="space-x-4">
               <Button 
                 variant="outline" 
                 className="border-white text-purple-600 hover:bg-white/10"
-                onClick={() => openLink('https://github.com/wannabes48/ai-space-optimizer')}
+                onClick={() => openLink('https://luxe-estate-platform.vercel.app/')}
               >
                 View Project
               </Button>
@@ -112,20 +113,43 @@ export default function Portfolio() {
           <div className="group">
             <div className="mb-6 overflow-hidden rounded-lg">
               <img 
-                src={dersImg} 
-                alt="DERS Preview"
+                src={intellidebtmanagerImg} 
+                alt="IntelliDebt Manager Preview"
                 className="w-full transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <h3 className="text-2xl font-serif text-white mb-3">DERS – Emergency Response</h3>
+            <h3 className="text-2xl font-serif text-white mb-3">IntelliDebt Manager</h3>
             <p className="text-white/80 font-light mb-4">
-              Decentralized platform to report and respond to emergencies.
+              A Smart Loan Recovery System-- An end-to-end ML system that predicts loan defaults and creates personalized recovery strategies for borrowers. 
             </p>
             <div className="space-x-4">
               <Button 
                 variant="outline" 
                 className="border-white text-purple-600 hover:bg-white/10"
-                onClick={() => openLink('https://github.com/wannabes48/My-Projects')}
+                onClick={() => openLink('https://intellidebt-manager.onrender.com/')}
+              >
+                View Project
+              </Button>
+            </div>
+          </div>
+
+          <div className="group">
+            <div className="mb-6 overflow-hidden rounded-lg">
+              <img 
+                src={weatherAppImg} 
+                alt="Weather App Preview"
+                className="w-full transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <h3 className="text-2xl font-serif text-white mb-3">Weather App</h3>
+            <p className="text-white/80 font-light mb-4">
+              A responsive weather application built with React and Tailwind CSS.
+            </p>
+            <div className="space-x-4">
+              <Button 
+                variant="outline" 
+                className="border-white text-purple-600 hover:bg-white/10"
+                onClick={() => openLink('https://weather-app-sigma-seven-38.vercel.app')}
               >
                 View Project
               </Button>
@@ -158,12 +182,12 @@ export default function Portfolio() {
           <Button 
             variant="outline"
             className="border-white text-purple-600 hover:bg-white/10 w-full justify-center"
-            onClick={() => openLink('https://www.linkedin.com/in/daniel-siro-b4a0b4237')}
+            onClick={() => openLink('https://www.linkedin.com/in/daniel-siro-867715279?utm_source=share_via&utm_content=profile&utm_medium=member_android')}
           >
             LinkedIn
           </Button>
         </div>
       </section>
-    </div>
+                 </div>
   );
 }
