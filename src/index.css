@@ -8,24 +8,123 @@
   }
 
   body {
-    @apply antialiased;
+    @apply antialiased bg-dark-900 text-white font-sans;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #22223a;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00b4d8;
   }
 }
 
-/* Custom gradient animations */
-.gradient-animate {
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+@layer components {
+  /* Navigation active link */
+  .nav-link {
+    @apply text-sm font-sans tracking-wider transition-colors duration-300;
+  }
+  .nav-link:hover {
+    @apply text-accent-cyan;
+  }
+  .nav-link.active {
+    @apply text-accent-cyan;
+  }
+
+  /* Skill progress bar */
+  .skill-bar {
+    @apply h-1 rounded-full bg-dark-500 overflow-hidden;
+  }
+  .skill-bar-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(90deg, #00b4d8, #48cae4);
+    width: 0%;
+    animation: progressBar 1.5s ease-out forwards;
+  }
+
+  /* Section divider glow line */
+  .glow-line {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+  }
+
+  /* CTA button */
+  .btn-outline {
+    @apply px-8 py-3 border border-white/30 text-white text-sm tracking-widest uppercase
+           font-heading font-light transition-all duration-300;
+  }
+  .btn-outline:hover {
+    @apply border-accent-cyan text-accent-cyan bg-accent-cyan/5;
+  }
+
+  /* Social icon */
+  .social-icon {
+    @apply text-white/60 transition-all duration-300 text-lg;
+  }
+  .social-icon:hover {
+    @apply text-accent-cyan;
+  }
+
+  /* Corner decorative bracket */
+  .corner-bracket {
+    @apply absolute;
+    width: 40px;
+    height: 40px;
+  }
+  .corner-bracket::before,
+  .corner-bracket::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .corner-bracket.bottom-right {
+    bottom: 2rem;
+    right: 2rem;
+  }
+  .corner-bracket.bottom-right::before {
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 1px;
+  }
+  .corner-bracket.bottom-right::after {
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 40px;
+  }
+
+  /* Experience timeline dot */
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full border-2 border-accent-cyan bg-dark-800 flex-shrink-0;
+  }
+
+  /* Hobby icon circle */
+  .hobby-circle {
+    @apply w-16 h-16 rounded-full border border-white/20 flex items-center justify-center
+           text-white/70 text-xl transition-all duration-300;
+  }
+  .hobby-circle:hover {
+    @apply border-accent-cyan text-accent-cyan;
+  }
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+/* Progress bar width custom property support */
+.skill-bar-fill[style] {
+  animation: progressBar 1.5s ease-out forwards;
+}
+
+@keyframes progressBar {
+  0% { width: 0%; }
+  100% { width: var(--progress-width, 0%); }
 }
