@@ -8,9 +8,46 @@
   }
 
   body {
-    @apply antialiased bg-dark-900 text-white font-sans;
+    @apply antialiased font-sans;
     margin: 0;
     padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  /* Dark theme (default) */
+  .dark body,
+  .dark {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #0f0f18;
+    --bg-card: #141420;
+    --bg-nav: rgba(10, 10, 15, 0.8);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.6);
+    --text-muted: rgba(255, 255, 255, 0.4);
+    --text-faint: rgba(255, 255, 255, 0.2);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-hover: rgba(255, 255, 255, 0.1);
+    --accent: #00b4d8;
+    --accent-light: #48cae4;
+    --skill-bar-bg: #22223a;
+  }
+
+  /* Light theme */
+  .light body,
+  .light {
+    --bg-primary: #f8f9fc;
+    --bg-secondary: #ffffff;
+    --bg-card: #f0f2f7;
+    --bg-nav: rgba(248, 249, 252, 0.85);
+    --text-primary: #1a1a2e;
+    --text-secondary: rgba(26, 26, 46, 0.7);
+    --text-muted: rgba(26, 26, 46, 0.5);
+    --text-faint: rgba(26, 26, 46, 0.2);
+    --border-color: rgba(26, 26, 46, 0.08);
+    --border-hover: rgba(26, 26, 46, 0.15);
+    --accent: #0077b6;
+    --accent-light: #00b4d8;
+    --skill-bar-bg: #dfe3ec;
   }
 
   /* Custom Scrollbar */
@@ -18,61 +55,98 @@
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0f;
+    background: var(--bg-primary);
   }
   ::-webkit-scrollbar-thumb {
-    background: #22223a;
+    background: var(--skill-bar-bg);
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #00b4d8;
+    background: var(--accent);
   }
 }
 
 @layer components {
+  /* ---- Themed utility classes ---- */
+  .themed-bg-primary {
+    background-color: var(--bg-primary);
+  }
+  .themed-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+  .themed-bg-card {
+    background-color: var(--bg-card);
+  }
+  .themed-bg-nav {
+    background-color: var(--bg-nav);
+  }
+  .themed-text-primary {
+    color: var(--text-primary);
+  }
+  .themed-text-secondary {
+    color: var(--text-secondary);
+  }
+  .themed-text-muted {
+    color: var(--text-muted);
+  }
+  .themed-text-faint {
+    color: var(--text-faint);
+  }
+  .themed-border {
+    border-color: var(--border-color);
+  }
+  .themed-border-hover {
+    border-color: var(--border-hover);
+  }
+
   /* Navigation active link */
   .nav-link {
     @apply text-sm font-sans tracking-wider transition-colors duration-300;
+    color: var(--text-muted);
   }
   .nav-link:hover {
-    @apply text-accent-cyan;
+    color: var(--accent);
   }
   .nav-link.active {
-    @apply text-accent-cyan;
+    color: var(--accent);
   }
 
   /* Skill progress bar */
   .skill-bar {
-    @apply h-1 rounded-full bg-dark-500 overflow-hidden;
+    @apply h-1 rounded-full overflow-hidden;
+    background: var(--skill-bar-bg);
   }
   .skill-bar-fill {
     @apply h-full rounded-full;
-    background: linear-gradient(90deg, #00b4d8, #48cae4);
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
     width: 0%;
-    animation: progressBar 1.5s ease-out forwards;
   }
 
   /* Section divider glow line */
   .glow-line {
     @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
   }
 
   /* CTA button */
   .btn-outline {
-    @apply px-8 py-3 border border-white/30 text-white text-sm tracking-widest uppercase
-           font-heading font-light transition-all duration-300;
+    @apply px-8 py-3 text-sm tracking-widest uppercase font-heading font-light transition-all duration-300;
+    border: 1px solid var(--border-hover);
+    color: var(--text-primary);
   }
   .btn-outline:hover {
-    @apply border-accent-cyan text-accent-cyan bg-accent-cyan/5;
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0, 180, 216, 0.05);
   }
 
   /* Social icon */
   .social-icon {
-    @apply text-white/60 transition-all duration-300 text-lg;
+    @apply transition-all duration-300 text-lg;
+    color: var(--text-muted);
   }
   .social-icon:hover {
-    @apply text-accent-cyan;
+    color: var(--accent);
   }
 
   /* Corner decorative bracket */
@@ -85,7 +159,7 @@
   .corner-bracket::after {
     content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--text-faint);
   }
   .corner-bracket.bottom-right {
     bottom: 2rem;
@@ -106,22 +180,70 @@
 
   /* Experience timeline dot */
   .timeline-dot {
-    @apply w-3 h-3 rounded-full border-2 border-accent-cyan bg-dark-800 flex-shrink-0;
+    @apply w-3 h-3 rounded-full flex-shrink-0;
+    border: 2px solid var(--accent);
+    background: var(--bg-primary);
   }
 
   /* Hobby icon circle */
   .hobby-circle {
-    @apply w-16 h-16 rounded-full border border-white/20 flex items-center justify-center
-           text-white/70 text-xl transition-all duration-300;
+    @apply w-16 h-16 rounded-full flex items-center justify-center text-xl transition-all duration-300;
+    border: 1px solid var(--border-hover);
+    color: var(--text-muted);
   }
   .hobby-circle:hover {
-    @apply border-accent-cyan text-accent-cyan;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Theme toggle button */
+  .theme-toggle {
+    @apply w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 cursor-pointer;
+    border: 1px solid var(--border-hover);
+    color: var(--text-muted);
+    background: transparent;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0, 180, 216, 0.05);
+  }
+
+  /* Download CV button */
+  .btn-download {
+    @apply px-5 py-2 text-xs tracking-widest uppercase font-heading font-medium
+           rounded-full transition-all duration-300 flex items-center gap-2;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+  }
+  .btn-download:hover {
+    background: var(--accent-light);
+    box-shadow: 0 4px 20px rgba(0, 180, 216, 0.3);
+    transform: translateY(-1px);
   }
 }
 
-/* Progress bar width custom property support */
-.skill-bar-fill[style] {
-  animation: progressBar 1.5s ease-out forwards;
+/* Smooth transitions on theme change */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Exclude animation/transform transitions from theme transition */
+a, button, .skill-bar-fill, .group, svg {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Print styles for CV download */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: #1a1a2e !important;
+  }
 }
 
 @keyframes progressBar {

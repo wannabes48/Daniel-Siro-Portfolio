@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, createContext, useContext } from "react";
 import {
   FaGithub,
   FaLinkedinIn,
@@ -19,7 +19,10 @@ import {
   FaPencilAlt,
   FaPlane,
   FaGraduationCap,
-  FaChess
+  FaChess,
+  FaSun,
+  FaMoon,
+  FaDownload,
 } from "react-icons/fa";
 import {
   SiReact,
@@ -35,6 +38,131 @@ import {
 
 import heroWorkspaceImg from "./assets/images/hero-workspace.png";
 import profilePortraitImg from "./assets/images/profile-portrait.png";
+
+// ---------- Theme Context ---------- //
+const ThemeContext = createContext();
+
+function useTheme() {
+  return useContext(ThemeContext);
+}
+
+// ---------- CV Download ---------- //
+function downloadCV() {
+  const cvHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daniel Siro — CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; color: #1a1a2e; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
+    h1 { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; margin-bottom: 4px; }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 14px; color: #0077b6; text-transform: uppercase; letter-spacing: 3px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #0077b6; }
+    h3 { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
+    .subtitle { color: #0077b6; font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+    .contact { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skill { margin-bottom: 8px; }
+    .skill-name { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 3px; }
+    .skill-bar { height: 4px; background: #e0e0e0; border-radius: 2px; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg, #0077b6, #00b4d8); border-radius: 2px; }
+    .exp-item { margin-bottom: 12px; }
+    .exp-company { font-size: 13px; font-weight: 600; text-transform: uppercase; }
+    .exp-role { font-size: 11px; color: #0077b6; }
+    .exp-desc { font-size: 11px; color: #666; }
+    .tag { display: inline-block; font-size: 11px; padding: 3px 10px; border: 1px solid #ddd; border-radius: 12px; margin: 2px 4px 2px 0; color: #555; }
+    .lang-item { font-size: 12px; display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .service-item { font-size: 12px; color: #555; padding: 3px 0; border-left: 2px solid #00b4d8; padding-left: 10px; margin-bottom: 4px; }
+    .design-item { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .edu-degree { font-size: 13px; font-weight: 600; }
+    .edu-school { font-size: 11px; color: #666; }
+    @media print {
+      body { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>DANIEL SIRO</h1>
+  <div class="subtitle">Software Developer</div>
+  <div class="contact">✉ sirodaniel48@gmail.com &nbsp;|&nbsp; 📍 Kisii, Kenya</div>
+  <div class="contact">GitHub: github.com/wannabes48 &nbsp;|&nbsp; LinkedIn: linkedin.com/in/daniel-siro-867715279</div>
+
+  <div class="grid" style="margin-top: 20px;">
+    <div>
+      <h2>Software Skills</h2>
+      ${[
+        { name: "React / Next.js", pct: 90 },
+        { name: "Python / Django", pct: 88 },
+        { name: "JavaScript", pct: 92 },
+        { name: "Tailwind CSS", pct: 85 },
+        { name: "PostgreSQL", pct: 78 },
+      ].map(s => `
+        <div class="skill">
+          <div class="skill-name"><span>${s.name}</span><span>${s.pct}%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:${s.pct}%"></div></div>
+        </div>
+      `).join("")}
+
+      <h2>Languages</h2>
+      ${[
+        { name: "English", level: "Fluent" },
+        { name: "Swahili", level: "Native" },
+        { name: "Spanish", level: "Basic" },
+        { name: "Ekegusii", level: "Native" },
+      ].map(l => `<div class="lang-item"><span>${l.name}</span><span>${l.level}</span></div>`).join("")}
+
+      <h2>Personal Skills</h2>
+      <div>${["Creativity", "Team Work", "Problem Solving", "Communication", "Leadership"].map(s => `<span class="tag">${s}</span>`).join("")}</div>
+    </div>
+
+    <div>
+      <h2>Experience</h2>
+      ${[
+        { company: "Freelance", role: "Full Stack Developer", desc: "Building web platforms and AI-powered tools for various clients" },
+        { company: "QuickDrop", role: "Lead Developer", desc: "Crowdsourced delivery platform built with Django" },
+        { company: "Luxe Properties", role: "Founder and Developer", desc: "Luxury real estate platform with Django & Next.js" },
+        { company: "ForeSafe", role: "Founder and Developer", desc: "Vehicle safety & notification system with Next.js" },
+      ].map(e => `
+        <div class="exp-item">
+          <div class="exp-company">${e.company}</div>
+          <div class="exp-role">${e.role}</div>
+          <div class="exp-desc">${e.desc}</div>
+        </div>
+      `).join("")}
+
+      <h2>Education</h2>
+      <div class="edu-degree">BSc in Computer Science</div>
+      <div class="edu-school">Maseno University</div>
+      <div class="edu-school">Focus on Full Stack Development, DevOps & AI/ML</div>
+    </div>
+
+    <div>
+      <h2>What Can I Do?</h2>
+      ${["Web Applications", "REST APIs", "Database Design", "AI Integration", "UI / UX Design", "Mobile Apps", "DevOps", "Cloud Computing", "Machine Learning", "Data Science"].map(s => `<div class="service-item">${s}</div>`).join("")}
+
+      <h2>Design Skills</h2>
+      ${["Creativity · Planning & Strategy", "UI / UX · Prototyping · Layout", "Responsive Design · Accessibility", "Color Theory · Typography"].map(d => `<div class="design-item">${d}</div>`).join("")}
+    </div>
+  </div>
+</body>
+</html>`;
+
+  const blob = new Blob([cvHTML], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+
+  // Open in new window and trigger print for PDF
+  const printWindow = window.open(url, "_blank");
+  if (printWindow) {
+    printWindow.onload = () => {
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    };
+  }
+}
 
 // ---------- data ---------- //
 const navLinks = ["Home", "About", "Resume", "Portfolio"];
@@ -170,8 +298,10 @@ const socialLinks = [
 // ---------- components ---------- //
 
 function Navbar({ activeSection }) {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-dark-900/80 backdrop-blur-md border-b border-white/5">
+    <nav className="fixed top-0 left-0 w-full z-50 themed-bg-nav backdrop-blur-md border-b themed-border no-print">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-14">
         <div className="flex items-center gap-8">
           {navLinks.map((link) => (
@@ -179,20 +309,41 @@ function Navbar({ activeSection }) {
               key={link}
               href={`#${link.toLowerCase()}`}
               className={`nav-link ${
-                activeSection === link.toLowerCase() ? "active" : "text-white/60"
+                activeSection === link.toLowerCase() ? "active" : ""
               }`}
             >
               {link}
             </a>
           ))}
         </div>
-        <a
-          href="mailto:sirodaniel48@gmail.com"
-          className="hidden md:flex items-center gap-2 text-white/60 text-sm hover:text-accent-cyan transition-colors"
-        >
-          <FaPhone className="text-xs" />
-          sirodaniel48@gmail.com
-        </a>
+        <div className="flex items-center gap-3">
+          {/* Download CV button */}
+          <button
+            onClick={downloadCV}
+            className="btn-download hidden md:flex"
+            aria-label="Download CV"
+          >
+            <FaDownload className="text-xs" />
+            Download CV
+          </button>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
+
+          <a
+            href="mailto:sirodaniel48@gmail.com"
+            className="hidden lg:flex items-center gap-2 themed-text-muted text-sm hover:text-[var(--accent)] transition-colors"
+          >
+            <FaPhone className="text-xs" />
+            sirodaniel48@gmail.com
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -214,11 +365,11 @@ function SkillBar({ name, pct, icon, delay = 0 }) {
   return (
     <div ref={ref} className="mb-5" style={{ animationDelay: `${delay}ms` }}>
       <div className="flex items-center justify-between mb-1.5">
-        <div className="flex items-center gap-2 text-sm text-white/80">
-          <span className="text-accent-cyan text-xs">{icon}</span>
+        <div className="flex items-center gap-2 text-sm themed-text-secondary">
+          <span className="text-[var(--accent)] text-xs">{icon}</span>
           {name}
         </div>
-        <span className="text-xs text-white/40">{pct}%</span>
+        <span className="text-xs themed-text-muted">{pct}%</span>
       </div>
       <div className="skill-bar">
         <div
@@ -237,14 +388,24 @@ function SkillBar({ name, pct, icon, delay = 0 }) {
 // ---------- sections ---------- //
 
 function HeroSection() {
+  const { theme } = useTheme();
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
+      style={{ background: "var(--bg-primary)" }}
     >
       {/* Background image */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/95 to-dark-900/40 z-10" />
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: theme === "dark"
+              ? "linear-gradient(to right, var(--bg-primary), rgba(10,10,15,0.95), rgba(10,10,15,0.4))"
+              : "linear-gradient(to right, var(--bg-primary), rgba(248,249,252,0.95), rgba(248,249,252,0.3))"
+          }}
+        />
         <img
           src={heroWorkspaceImg}
           alt="Workspace"
@@ -255,15 +416,15 @@ function HeroSection() {
       {/* Content */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
         <div className="max-w-xl">
-          <p className="text-white/50 text-lg font-heading tracking-widest mb-2 animate-fade-in">
+          <p className="themed-text-muted text-lg font-heading tracking-widest mb-2 animate-fade-in">
             DANIEL
           </p>
-          <h1 className="font-heading font-black text-7xl md:text-8xl lg:text-9xl leading-none mb-2 animate-slide-right">
+          <h1 className="font-heading font-black text-7xl md:text-8xl lg:text-9xl leading-none mb-2 themed-text-primary animate-slide-right">
             SIRO
           </h1>
           <div className="flex items-center gap-3 mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="h-px w-10 bg-accent-cyan" />
-            <span className="text-accent-cyan font-heading text-sm tracking-[0.3em] uppercase">
+            <div className="h-px w-10" style={{ background: "var(--accent)" }} />
+            <span className="font-heading text-sm tracking-[0.3em] uppercase" style={{ color: "var(--accent)" }}>
               Software Developer
             </span>
           </div>
@@ -303,21 +464,21 @@ function HeroSection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="relative min-h-screen bg-dark-800">
+    <section id="about" className="relative min-h-screen themed-bg-secondary">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-28 grid md:grid-cols-2 gap-12 items-center min-h-screen">
         {/* Left — Text */}
         <div>
-          <h2 className="font-heading font-bold text-5xl md:text-6xl mb-4 tracking-tight">
+          <h2 className="font-heading font-bold text-5xl md:text-6xl mb-4 tracking-tight themed-text-primary">
             ABOUT
           </h2>
           <a
             href="mailto:sirodaniel48@gmail.com"
-            className="text-white/40 text-sm hover:text-accent-cyan transition-colors mb-8 inline-block"
+            className="themed-text-muted text-sm hover:text-[var(--accent)] transition-colors mb-8 inline-block"
           >
             sirodaniel48@gmail.com
           </a>
 
-          <p className="text-white/60 leading-relaxed text-[15px] mb-10 max-w-lg">
+          <p className="themed-text-secondary leading-relaxed text-[15px] mb-10 max-w-lg">
             Software Developer with a passion for building impactful digital solutions.
             I blend my background in architecture with technology to create innovative
             web platforms, AI-powered tools, and full-stack applications. I specialize
@@ -326,8 +487,8 @@ function AboutSection() {
             problem-solving, which enables me to build streamlined, user-centric products.
           </p>
 
-          <div className="flex items-center gap-2 text-white/40 text-sm">
-            <FaMapMarkerAlt className="text-accent-cyan text-xs" />
+          <div className="flex items-center gap-2 themed-text-muted text-sm">
+            <FaMapMarkerAlt className="text-[var(--accent)] text-xs" />
             <span>Kisii, Kenya</span>
           </div>
         </div>
@@ -335,7 +496,7 @@ function AboutSection() {
         {/* Right — Portrait */}
         <div className="relative flex justify-center md:justify-end">
           <div className="relative">
-            <div className="absolute -inset-1 bg-gradient-to-br from-accent-cyan/20 to-transparent rounded-lg blur-sm" />
+            <div className="absolute -inset-1 rounded-lg blur-sm" style={{ background: "linear-gradient(to bottom right, rgba(0,180,216,0.2), transparent)" }} />
             <img
               src={profilePortraitImg}
               alt="Daniel Siro"
@@ -353,37 +514,47 @@ function AboutSection() {
 
 function ResumeSection() {
   return (
-    <section id="resume" className="relative bg-dark-900 min-h-screen">
+    <section id="resume" className="relative min-h-screen themed-bg-primary">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-28">
+        {/* Download CV inline for mobile */}
+        <div className="flex items-center justify-between mb-12 md:hidden">
+          <h2 className="font-heading font-bold text-3xl tracking-tight themed-text-primary">RESUME</h2>
+          <button onClick={downloadCV} className="btn-download">
+            <FaDownload className="text-xs" />
+            Download CV
+          </button>
+        </div>
+
         {/* 3-column grid */}
         <div className="grid md:grid-cols-3 gap-12">
           {/* Column 1 */}
           <div>
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 themed-text-primary">
               Software Skills
             </h3>
             {softwareSkills.map((s, i) => (
               <SkillBar key={s.name} {...s} delay={i * 150} />
             ))}
 
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 themed-text-primary">
               Languages
             </h3>
             {languages.map((l) => (
-              <div key={l.name} className="flex justify-between text-sm text-white/60 mb-3">
+              <div key={l.name} className="flex justify-between text-sm themed-text-secondary mb-3">
                 <span>{l.name}</span>
-                <span className="text-white/30">{l.level}</span>
+                <span className="themed-text-muted">{l.level}</span>
               </div>
             ))}
 
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 themed-text-primary">
               Personal Skills
             </h3>
             <div className="flex flex-wrap gap-2">
               {personalSkills.map((s) => (
                 <span
                   key={s}
-                  className="px-3 py-1 text-xs border border-white/10 text-white/50 rounded-full hover:border-accent-cyan hover:text-accent-cyan transition-colors"
+                  className="px-3 py-1 text-xs rounded-full transition-colors themed-text-muted hover:text-[var(--accent)]"
+                  style={{ border: "1px solid var(--border-hover)" }}
                 >
                   {s}
                 </span>
@@ -393,7 +564,7 @@ function ResumeSection() {
 
           {/* Column 2 */}
           <div>
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 themed-text-primary">
               Experience
             </h3>
             <div className="space-y-7">
@@ -401,14 +572,14 @@ function ResumeSection() {
                 <div key={e.company} className="flex gap-4">
                   <div className="flex flex-col items-center pt-1.5">
                     <div className="timeline-dot" />
-                    <div className="w-px flex-1 bg-white/5 mt-1" />
+                    <div className="w-px flex-1 mt-1" style={{ background: "var(--border-color)" }} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-heading font-semibold text-white uppercase tracking-wide">
+                    <h4 className="text-sm font-heading font-semibold themed-text-primary uppercase tracking-wide">
                       {e.company}
                     </h4>
-                    <p className="text-xs text-accent-cyan mb-1">{e.role}</p>
-                    <p className="text-xs text-white/40 leading-relaxed">
+                    <p className="text-xs mb-1" style={{ color: "var(--accent)" }}>{e.role}</p>
+                    <p className="text-xs themed-text-muted leading-relaxed">
                       {e.description}
                     </p>
                   </div>
@@ -416,20 +587,20 @@ function ResumeSection() {
               ))}
             </div>
 
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 themed-text-primary">
               Education
             </h3>
             {education.map((ed) => (
               <div key={ed.degree} className="flex gap-4">
                 <div className="pt-1.5">
-                  <FaGraduationCap className="text-accent-cyan text-sm" />
+                  <FaGraduationCap className="text-sm" style={{ color: "var(--accent)" }} />
                 </div>
                 <div>
-                  <h4 className="text-sm font-heading font-semibold text-white">
+                  <h4 className="text-sm font-heading font-semibold themed-text-primary">
                     {ed.degree}
                   </h4>
-                  <p className="text-xs text-white/40">{ed.school}</p>
-                  <p className="text-xs text-white/30 mt-1">{ed.detail}</p>
+                  <p className="text-xs themed-text-muted">{ed.school}</p>
+                  <p className="text-xs themed-text-faint mt-1">{ed.detail}</p>
                 </div>
               </div>
             ))}
@@ -437,39 +608,40 @@ function ResumeSection() {
 
           {/* Column 3 */}
           <div>
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-8 themed-text-primary">
               What Can I Do?
             </h3>
             <div className="grid grid-cols-2 gap-3 mb-10">
               {whatCanIDo.map((item) => (
                 <div
                   key={item}
-                  className="text-xs text-white/50 border-l-2 border-accent-cyan/30 pl-3 py-1 hover:text-white/80 hover:border-accent-cyan transition-colors"
+                  className="text-xs themed-text-muted py-1 hover:text-[var(--text-secondary)] transition-colors"
+                  style={{ borderLeft: "2px solid rgba(0,180,216,0.3)", paddingLeft: "12px" }}
                 >
                   {item}
                 </div>
               ))}
             </div>
 
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-6 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-6 themed-text-primary">
               Design Skills
             </h3>
             <ul className="space-y-2 mb-10">
               {designSkills.map((ds) => (
-                <li key={ds} className="text-xs text-white/50 leading-relaxed">
+                <li key={ds} className="text-xs themed-text-muted leading-relaxed">
                   {ds}
                 </li>
               ))}
             </ul>
 
-            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-6 text-white">
+            <h3 className="font-heading font-bold text-sm tracking-widest uppercase mb-6 themed-text-primary">
               Hobbies & Interests
             </h3>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {hobbies.map((h) => (
                 <div key={h.name} className="flex flex-col items-center gap-2">
                   <div className="hobby-circle">{h.icon}</div>
-                  <span className="text-xs text-white/40">{h.name}</span>
+                  <span className="text-xs themed-text-muted">{h.name}</span>
                 </div>
               ))}
             </div>
@@ -484,9 +656,9 @@ function ResumeSection() {
 
 function PortfolioSection() {
   return (
-    <section id="portfolio" className="relative bg-dark-800 min-h-screen">
+    <section id="portfolio" className="relative min-h-screen themed-bg-secondary">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-28">
-        <h2 className="font-heading font-bold text-5xl md:text-6xl mb-16 tracking-tight">
+        <h2 className="font-heading font-bold text-5xl md:text-6xl mb-16 tracking-tight themed-text-primary">
           PORTFOLIO
         </h2>
 
@@ -497,17 +669,19 @@ function PortfolioSection() {
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block relative bg-dark-700 rounded-lg overflow-hidden border border-white/5
-                         hover:border-accent-cyan/30 transition-all duration-500"
+              className="group block relative themed-bg-card rounded-lg overflow-hidden transition-all duration-500"
+              style={{ border: "1px solid var(--border-color)" }}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = "rgba(0,180,216,0.3)"}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border-color)"}
             >
               <div className="p-8">
-                <h3 className="font-heading font-semibold text-xl text-white mb-2 group-hover:text-accent-cyan transition-colors">
+                <h3 className="font-heading font-semibold text-xl themed-text-primary mb-2 group-hover:text-[var(--accent)] transition-colors">
                   {p.title}
                 </h3>
-                <p className="text-sm text-white/40 leading-relaxed mb-6">
+                <p className="text-sm themed-text-muted leading-relaxed mb-6">
                   {p.description}
                 </p>
-                <span className="inline-flex items-center gap-2 text-xs text-accent-cyan/80 group-hover:text-accent-cyan tracking-widest uppercase">
+                <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase" style={{ color: "var(--accent)" }}>
                   View Project
                   <svg
                     className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
@@ -526,7 +700,8 @@ function PortfolioSection() {
               </div>
 
               {/* Hover glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-cyan/0 via-transparent to-accent-cyan/0 group-hover:from-accent-cyan/5 group-hover:to-accent-cyan/5 transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                   style={{ background: "radial-gradient(ellipse at center, rgba(0,180,216,0.04), transparent)" }} />
             </a>
           ))}
         </div>
@@ -539,12 +714,12 @@ function PortfolioSection() {
 
 function FooterContact() {
   return (
-    <footer className="bg-dark-900 border-t border-white/5">
+    <footer className="themed-bg-primary" style={{ borderTop: "1px solid var(--border-color)" }}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
-            <h3 className="font-heading font-bold text-2xl mb-2">Let's Connect</h3>
-            <p className="text-white/40 text-sm">
+            <h3 className="font-heading font-bold text-2xl mb-2 themed-text-primary">Let's Connect</h3>
+            <p className="themed-text-muted text-sm">
               Open for collaborations, opportunities, and new ideas.
             </p>
           </div>
@@ -569,8 +744,8 @@ function FooterContact() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/20">
+        <div className="mt-12 pt-6 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid var(--border-color)" }}>
+          <p className="text-xs themed-text-faint">
             © {new Date().getFullYear()} Daniel Siro. All rights reserved.
           </p>
           <div className="flex gap-5">
@@ -597,6 +772,28 @@ function FooterContact() {
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
+  const [theme, setTheme] = useState(() => {
+    // Check localStorage, default to dark
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("portfolio-theme") || "dark";
+    }
+    return "dark";
+  });
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      localStorage.setItem("portfolio-theme", next);
+      return next;
+    });
+  };
+
+  // Apply theme class to root element
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove("dark", "light");
+    root.classList.add(theme);
+  }, [theme]);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -616,13 +813,13 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <Navbar activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
       <ResumeSection />
       <PortfolioSection />
       <FooterContact />
-    </>
+    </ThemeContext.Provider>
   );
 }
