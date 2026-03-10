@@ -211,6 +211,16 @@ const experiences = [
     role: "Founder and Developer",
     description: "Vehicle safety & notification system with Next.js",
   },
+  {
+    company: "IntelliDebt Manager",
+    role: "Creator and Lead Developer",
+    description: "A Smart Loan Recovery System — an end-to-end ML system that predicts loan defaults.",
+  },
+  {
+    company: "RapidRecruit",
+    role: "Founder and Lead Developer",
+    description: "A Résumé Screening System that takes a folder of résumés and a Job Description (JD) as input, processes each résumé, extracts relevant information, and calculates a score based on how well the candidate matches the job requirements.",
+  }
 ];
 
 const education = [
@@ -281,6 +291,18 @@ const projects = [
     link: "https://foresafe.vercel.app",
     image: null,
   },
+  {
+    title: "RapidRecruit",
+    description: "A Résumé Screening System Using Python and Multiprocessing that takes a folder of résumés and a Job Description (JD) as input, processes each résumé, extracts relevant information, and calculates a score based on how well the candidate matches the job requirements.",
+    link: "https://rapidrecruit.streamlit.app/",
+    image: null,
+  },
+  {
+    title: "IntelliDebt Manager",
+    description: "A Smart Loan Recovery System — an end-to-end ML system that predicts loan defaults.",
+    link: "https://intellidebt-manager.onrender.com/",
+    image: null,
+  }
 ];
 
 const socialLinks = [
