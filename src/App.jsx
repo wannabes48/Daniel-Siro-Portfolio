@@ -290,9 +290,9 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/daniel-siro-867715279",
     label: "LinkedIn",
   },
-  { icon: <FaInstagram />, url: "#", label: "Instagram" },
-  { icon: <FaTwitter />, url: "#", label: "Twitter" },
-  { icon: <FaWhatsapp />, url: "#", label: "WhatsApp" },
+  { icon: <FaInstagram />, url: "https://www.instagram.com/yvng.buoy_siro/", label: "Instagram" },
+  { icon: <FaTwitter />, url: "https://x.com/Incre_Speaker39", label: "Twitter" },
+  { icon: <FaWhatsapp />, url: "https://wa.me/+254703569398", label: "WhatsApp" },
 ];
 
 // ---------- components ---------- //
