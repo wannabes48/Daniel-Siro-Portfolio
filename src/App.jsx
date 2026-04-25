@@ -277,7 +277,7 @@ const projects = [
     title: "IntelliDebt Manager",
     description: "A Smart Loan Recovery System — an end-to-end ML system that predicts loan defaults.",
     link: "https://intellidebt-manager.onrender.com/",
-    image: null,
+    image: "assets/images/luxeproperties.jpg",
   },
   {
     title: "Weather App",
@@ -298,11 +298,18 @@ const projects = [
     image: null,
   },
   {
-    title: "IntelliDebt Manager",
-    description: "A Smart Loan Recovery System — an end-to-end ML system that predicts loan defaults.",
-    link: "https://intellidebt-manager.onrender.com/",
+    title: "TrustFlow",
+    description: "A simple web application that provides an AI-driven alternative credit score for informal workers.",
+    link: "https://trustflow-627114971033.us-west1.run.app",
     image: null,
   }
+  {
+    title: "Africa Explorer",
+    description: "Africa's capitals quiz with the current presidents.",
+    link: "https://african-capitals-presidents-288848187795.us-west1.run.app/",
+    image: null,
+  }
+
 ];
 
 const socialLinks = [
