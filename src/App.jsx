@@ -302,7 +302,8 @@ const projects = [
     description: "A simple web application that provides an AI-driven alternative credit score for informal workers.",
     link: "https://trustflow-627114971033.us-west1.run.app",
     image: null,
-  }
+  },
+  
   {
     title: "Africa Explorer",
     description: "Africa's capitals quiz with the current presidents.",
