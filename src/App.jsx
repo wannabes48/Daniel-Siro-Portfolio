@@ -303,6 +303,12 @@ const projects = [
     link: "https://trustflow-627114971033.us-west1.run.app",
     image: null,
   },
+  {
+    title: "SmartStack",
+    description: "A comprehensive platform for automotive parts discovery, inventory management, and equipment maintenance. SmartStack is a full-stack AI-Powered Spare Parts Identification Platform built with Django REST Framework (backend) and React + Vite (frontend). It enables technicians to identify spare parts in seconds using image recognition, smart search, interactive equipment diagrams, and real-time inventory visibility.",
+    link: "https://smartstack-dun.vercel.app/",
+    image: null,
+  },
   
   {
     title: "Africa Explorer",
