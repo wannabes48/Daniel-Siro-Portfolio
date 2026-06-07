@@ -55,9 +55,9 @@ function downloadCV() {
   <meta charset="UTF-8">
   <title>Daniel Siro — CV</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a2e; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
+    body { font-family: 'Geist Sans', 'Inter', system-ui, sans-serif; color: #1a1a2e; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
     h1 { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; margin-bottom: 4px; }
     h2 { font-family: 'Poppins', sans-serif; font-size: 14px; color: #0077b6; text-transform: uppercase; letter-spacing: 3px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #0077b6; }
     h3 { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
