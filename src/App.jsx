@@ -268,7 +268,7 @@ const projects = [
     solution: "Developed TrustFlow, an intelligent application that leverages alternative data points and advanced machine learning algorithms to provide fair, accurate, and inclusive credit assessments.",
     tech: ["Python", "Machine Learning", "Gemini AI", "Django"],
     impact: "Secured 2nd place by demonstrating a functional, highly scalable AI integration that successfully democratizes financial access.",
-    link: "https://trustflow-627114971033.us-west1.run.app"
+    link: "https://trustflowapp.vercel.app/"
   },
   {
     title: "Certchain",
@@ -276,7 +276,7 @@ const projects = [
     solution: "Engineered a decentralized application that issues and verifies academic credentials immutably on the blockchain, ensuring absolute data integrity and instant verification.",
     tech: ["Rust", "Soroban", "Stellar Network", "Web3"],
     impact: "Designed a tamper-proof system that significantly reduces verification time and eliminates the possibility of fraudulent credential claims.",
-    link: "#"
+    link: "https://cert-chain-frontend.vercel.app/"
   },
   {
     title: "VarsityBoda",
