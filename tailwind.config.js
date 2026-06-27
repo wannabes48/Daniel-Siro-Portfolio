@@ -22,8 +22,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
+        sans: ['"Geist Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['Poppins', '"Geist Sans"', 'sans-serif'],
+        mono: ['"Geist Mono"', 'JetBrains Mono', 'Menlo', 'monospace'],
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',

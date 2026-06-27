@@ -55,9 +55,9 @@ function downloadCV() {
   <meta charset="UTF-8">
   <title>Daniel Siro — CV</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; color: #1a1a2e; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
+    body { font-family: 'Geist Sans', 'Inter', system-ui, sans-serif; color: #1a1a2e; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
     h1 { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; margin-bottom: 4px; }
     h2 { font-family: 'Poppins', sans-serif; font-size: 14px; color: #0077b6; text-transform: uppercase; letter-spacing: 3px; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 2px solid #0077b6; }
     h3 { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
@@ -262,61 +262,89 @@ const hobbies = [
 
 const projects = [
   {
+    title: "TrustFlow",
+    award: "2nd Place Build with AI East Africa",
+    problem: "Traditional credit scoring models often exclude individuals without extensive financial histories, limiting their access to essential financial services.",
+    solution: "Developed TrustFlow, an intelligent application that leverages alternative data points and advanced machine learning algorithms to provide fair, accurate, and inclusive credit assessments.",
+    tech: ["Python", "Machine Learning", "Gemini AI", "Django"],
+    impact: "Secured 2nd place by demonstrating a functional, highly scalable AI integration that successfully democratizes financial access.",
+    link: "https://trustflowapp.vercel.app/"
+  },
+  {
+    title: "Certchain",
+    problem: "Credential fraud and the slow, manual verification of student academic records cause significant friction for educational institutions and employers.",
+    solution: "Engineered a decentralized application that issues and verifies academic credentials immutably on the blockchain, ensuring absolute data integrity and instant verification.",
+    tech: ["Rust", "Soroban", "Stellar Network", "Web3"],
+    impact: "Designed a tamper-proof system that significantly reduces verification time and eliminates the possibility of fraudulent credential claims.",
+    link: "https://cert-chain-frontend.vercel.app/"
+  },
+  {
+    title: "VarsityBoda",
+    problem: "University campuses often struggle with chaotic transportation options and disorganized parking, leading to inefficiencies for both students and drivers.",
+    solution: "Built a comprehensive mobile application that seamlessly connects students with local motorcycle taxis (bodas) while simultaneously offering real-time campus parking management.",
+    tech: ["Flutter", "Firebase", "Google Maps API"],
+    impact: "Delivered a smooth, cross-platform mobile experience with real-time database syncing, optimizing daily commutes and parking utilization.",
+    link: "#"
+  },
+  {
+    title: "AI Spare Parts Identification Platform",
+    award: "Davis and Shirtliff 2026 Hackathon",
+    problem: "Identifying the correct mechanical spare parts from vast catalogs is highly error-prone and time-consuming for field technicians and customers.",
+    solution: "Created an image-based identification tool that allows users to upload photos of parts and matches them against interactive, technical schematics using AI computer vision.",
+    tech: ["LLM/Computer Vision", "React", "GCP", "Django REST"],
+    impact: "Streamlined the maintenance workflow by reducing part misidentification, providing an intuitive interface for instant visual confirmation.",
+    link: "https://smartstack-dun.vercel.app/"
+  },
+  {
+    title: "Smart Loan Recovery System",
+    problem: "Financial institutions face high default rates and rely on inefficient, manual debt collection processes that fail to predict borrower behavior accurately.",
+    solution: "A robust debt management platform powered by predictive models that analyze borrower data to forecast default probabilities and suggest optimized recovery strategies.",
+    tech: ["Machine Learning", "Python", "Django", "Data Analytics"],
+    impact: "Modernizes the loan recovery pipeline, minimizing financial risk and improving the efficiency of collection operations.",
+    link: "https://intellidebt-manager.onrender.com/"
+  },
+  {
+    title: "RapidRecruit",
+    problem: "HR departments are overwhelmed by time-consuming manual resume screening, often leading to bottlenecks and unconscious bias in candidate evaluation.",
+    solution: "An AI-powered recruitment engine that ingests, parses, and intelligently scores candidate profiles and resumes against job requirements using natural language processing.",
+    tech: ["Gemini AI", "NLP", "Django", "React UI"],
+    impact: "Automates the initial screening pipeline, significantly reducing time-to-hire while providing objective, data-driven candidate shortlists.",
+    link: "https://rapidrecruit.streamlit.app/"
+  },
+  {
+    title: "Luxe Estate",
+    problem: "Premium architectural real estate requires massive upfront capital, shutting out retail investors. Furthermore, traditional real estate lacks liquidity, and managing consistent rental yield distribution is often manual, opaque, and inefficient.",
+    solution: "A Web3-integrated fractional real estate marketplace focused on premium properties in Kenya. It features a secondary peer-to-peer market for trading fractional tokens, an AI-driven Property Investment Advisor linked to live inventory, and automated yield disbursements directly to users' mobile wallets.",
+    tech: ["Web3", "Polygon", "Supabase", "Cloudflare Workers", "M-Pesa API", "AI"],
+    impact: "Democratizes access to high-value real estate through tokenized ownership while ensuring high security through robust KYC/AML compliance and row-level locking for atomic transactions.",
+    link: "https://luxe-estate-platform.vercel.app/"
+  },
+  {
+    title: "Foresafe",
+    problem: "When a parked vehicle is blocking traffic, involved in a minor incident, or has its lights left on, bystanders have no way to contact the owner without the owner publicly displaying their personal phone number on the dashboard, which poses a significant privacy risk.",
+    solution: "A mobile-first QR web system that assigns unique, scannable QR tags to vehicles. When a bystander scans the code, they are directed to a dynamic web page where they can instantly alert the owner via WhatsApp or push notifications—keeping the owner's actual contact information completely hidden.",
+    tech: ["Mobile-First UI", "QR Integration", "WhatsApp API", "Push Notifications"],
+    impact: "Enhances vehicle safety and driver privacy by enabling seamless, anonymous communication. Successfully engineered the complete database schemas for QR tag management, CSV tag generation, and intuitive registration flows for the mobile application.",
+    link: "https://foresafe.vercel.app"
+  },
+  {
     title: "QuickDrop",
     description: "A crowdsourced delivery platform built with Django and SQLite.",
     link: "https://github.com/wannabes48/quickdrop",
-    image: null,
-  },
-  {
-    title: "Luxe Properties",
-    description: "A luxury real estate platform built with Django and Next.js.",
-    link: "https://luxe-estate-platform.vercel.app/",
-    image: null,
-  },
-  {
-    title: "IntelliDebt Manager",
-    description: "A Smart Loan Recovery System — an end-to-end ML system that predicts loan defaults.",
-    link: "https://intellidebt-manager.onrender.com/",
-    image: "assets/images/luxeproperties.jpg",
+    tech: ["Django", "SQLite", "Python"]
   },
   {
     title: "Weather App",
     description: "A responsive weather application built with React and Tailwind CSS.",
     link: "https://weather-app-sigma-seven-38.vercel.app",
-    image: null,
+    tech: ["React", "Tailwind CSS"]
   },
-  {
-    title: "ForeSafe",
-    description: "Vehicle safety & notification system with Next.js.",
-    link: "https://foresafe.vercel.app",
-    image: null,
-  },
-  {
-    title: "RapidRecruit",
-    description: "A Résumé Screening System Using Python and Multiprocessing that takes a folder of résumés and a Job Description (JD) as input, processes each résumé, extracts relevant information, and calculates a score based on how well the candidate matches the job requirements.",
-    link: "https://rapidrecruit.streamlit.app/",
-    image: null,
-  },
-  {
-    title: "TrustFlow",
-    description: "A simple web application that provides an AI-driven alternative credit score for informal workers.",
-    link: "https://trustflow-627114971033.us-west1.run.app",
-    image: null,
-  },
-  {
-    title: "SmartStack",
-    description: "A comprehensive platform for automotive parts discovery, inventory management, and equipment maintenance. SmartStack is a full-stack AI-Powered Spare Parts Identification Platform built with Django REST Framework (backend) and React + Vite (frontend). It enables technicians to identify spare parts in seconds using image recognition, smart search, interactive equipment diagrams, and real-time inventory visibility.",
-    link: "https://smartstack-dun.vercel.app/",
-    image: null,
-  },
-  
   {
     title: "Africa Explorer",
     description: "Africa's capitals quiz with the current presidents.",
     link: "https://african-capitals-presidents-288848187795.us-west1.run.app/",
-    image: null,
+    tech: ["Web Tech"]
   }
-
 ];
 
 const socialLinks = [
@@ -458,12 +486,16 @@ function HeroSection() {
           <h1 className="font-heading font-black text-7xl md:text-8xl lg:text-9xl leading-none mb-2 themed-text-primary animate-slide-right">
             SIRO
           </h1>
-          <div className="flex items-center gap-3 mb-10 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+          <div className="flex items-center gap-3 mb-6 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <div className="h-px w-10" style={{ background: "var(--accent)" }} />
             <span className="font-heading text-sm tracking-[0.3em] uppercase" style={{ color: "var(--accent)" }}>
               Software Developer
             </span>
           </div>
+
+          <p className="themed-text-muted text-sm md:text-base mb-10 max-w-lg animate-slide-up" style={{ animationDelay: "0.4s", lineHeight: "1.7" }}>
+            I am a Full-Stack and Backend Engineer specializing in building intelligent, scalable systems. From AI-driven platforms and robust Django backends to decentralized Web3 applications, I engineer solutions that solve complex, real-world problems.
+          </p>
 
           <div className="flex gap-4 mb-12 animate-slide-up" style={{ animationDelay: "0.5s" }}>
             <a href="#resume" className="btn-outline">
@@ -515,12 +547,8 @@ function AboutSection() {
           </a>
 
           <p className="themed-text-secondary leading-relaxed text-[15px] mb-10 max-w-lg">
-            Software Developer with a passion for building impactful digital solutions.
-            I blend my background in architecture with technology to create innovative
-            web platforms, AI-powered tools, and full-stack applications. I specialize
-            in React, Next.js, Django, and Python — with experience delivering end-to-end
-            projects from concept to deployment. My greatest strength is creative
-            problem-solving, which enables me to build streamlined, user-centric products.
+            I am a Software Developer and Senior Computer Science student at Maseno University, driven by a passion for creating impactful technology. My engineering philosophy centers on bridging the gap between cutting-edge concepts—like artificial intelligence and blockchain—and practical, user-centric applications.<br/><br/>
+            My technical foundation spans across modern web, mobile, and backend architectures. Whether I'm designing resilient APIs with Django, crafting responsive interfaces with React and Flutter, or deploying smart contracts on the Stellar network using Rust and Soroban, I thrive on architectural challenges. Recently, my focus has expanded into integrating LLMs and machine learning to build intelligent systems, such as my award-winning AI credit scoring platform. I am constantly exploring new technologies to build secure, scalable, and innovative software solutions.
           </p>
 
           <div className="flex items-center gap-2 themed-text-muted text-sm">
@@ -710,14 +738,42 @@ function PortfolioSection() {
               onMouseEnter={(e) => e.currentTarget.style.borderColor = "rgba(0,180,216,0.3)"}
               onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border-color)"}
             >
-              <div className="p-8">
-                <h3 className="font-heading font-semibold text-xl themed-text-primary mb-2 group-hover:text-[var(--accent)] transition-colors">
+              <div className="p-8 flex flex-col h-full">
+                <h3 className="font-heading font-semibold text-xl themed-text-primary mb-1 group-hover:text-[var(--accent)] transition-colors flex flex-wrap items-center gap-3">
                   {p.title}
+                  {p.award && <span className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full" style={{ background: "rgba(0,180,216,0.1)", color: "var(--accent)", border: "1px solid rgba(0,180,216,0.2)" }}>{p.award}</span>}
                 </h3>
-                <p className="text-sm themed-text-muted leading-relaxed mb-6">
-                  {p.description}
-                </p>
-                <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase" style={{ color: "var(--accent)" }}>
+                
+                <div className="mt-5 mb-6 flex-grow flex flex-col">
+                  {p.description ? (
+                    <p className="text-sm themed-text-muted leading-relaxed flex-grow">
+                      {p.description}
+                    </p>
+                  ) : (
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="text-[11px] uppercase tracking-widest themed-text-secondary mb-1">The Problem</h4>
+                        <p className="text-sm themed-text-muted leading-relaxed">{p.problem}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-[11px] uppercase tracking-widest themed-text-secondary mb-1">The Solution</h4>
+                        <p className="text-sm themed-text-muted leading-relaxed">{p.solution}</p>
+                      </div>
+                      <div>
+                        <h4 className="text-[11px] uppercase tracking-widest themed-text-secondary mb-1">Impact</h4>
+                        <p className="text-sm themed-text-muted leading-relaxed">{p.impact}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                  {(p.tech || []).map((t) => (
+                    <span key={t} className="text-[10px] themed-text-faint px-2 py-1 rounded-full" style={{ border: "1px solid var(--border-hover)" }}>{t}</span>
+                  ))}
+                </div>
+
+                <span className="inline-flex items-center gap-2 text-xs tracking-widest uppercase mt-4" style={{ color: "var(--accent)" }}>
                   View Project
                   <svg
                     className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
