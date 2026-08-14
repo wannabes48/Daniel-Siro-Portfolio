@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-watermark: var(--watermark);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --bg: #F9F8F5;
+  --fg: #0A0A0A;
+  --fg-secondary: #555555;
+  --fg-muted: #888888;
+  --border: #E5E5E5;
+  --surface: #FFFFFF;
+  --surface-hover: #F5F4F1;
+  --accent: #0A0A0A;
+  --accent-hover: #222222;
+  --watermark: rgba(0,0,0,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* No dark mode specified in the strict Swiss mono theme, but we can override if needed */
+  /* The design explicitly asked for a warm off-white background, so we force light theme logic or leave it as is. */
+  /* If we need dark mode later, we define the dark variants here. For now, strictly follow the prompt. */
+  :root {
+    --bg: #F9F8F5;
+    --fg: #0A0A0A;
+    --fg-secondary: #555555;
+    --fg-muted: #888888;
+    --border: #E5E5E5;
+    --surface: #FFFFFF;
+    --accent: #0A0A0A;
+    --watermark: rgba(0,0,0,0.04);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--fg);
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+/* Marquee Animation (CSS Only) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+  }
+}
+
+/* Custom Link Underline */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-out;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+

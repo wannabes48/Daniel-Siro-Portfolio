@@ -1,0 +1,42 @@
+export const PROJECTS = [
+  {
+    title: "TrustFlow",
+    slug: "trustflow",
+    category: "AI / FINTECH",
+    description: "An AI-driven application that leverages alternative data points to provide fair, accurate credit assessments.",
+    stack: ["Python", "Machine Learning", "Gemini AI", "Django"],
+    image: "/trustflow.jpg",
+  },
+  {
+    title: "Certchain",
+    slug: "certchain",
+    category: "WEB3 / STELLAR",
+    description: "Decentralized application issuing and verifying academic credentials immutably on the blockchain.",
+    stack: ["Rust", "Soroban", "Web3", "Stellar"],
+    image: "/certchain.jpg",
+  },
+  {
+    title: "VarsityBoda",
+    slug: "varsityboda",
+    category: "MOBILE APP",
+    description: "Mobile application connecting students with motorcycle taxis and offering real-time campus parking management.",
+    stack: ["Flutter", "Firebase", "Google Maps API"],
+    image: "/varsityboda.jpg",
+  },
+  {
+    title: "SmartStack",
+    slug: "smartstack",
+    category: "AI / E-COMMERCE",
+    description: "Image-based identification tool matching parts against interactive schematics using AI computer vision.",
+    stack: ["React", "GCP", "Django REST", "Computer Vision"],
+    image: "/smartstack.jpg",
+  },
+  {
+    title: "Smart Loan Recovery",
+    slug: "smart-loan-recovery",
+    category: "MACHINE LEARNING",
+    description: "Predictive ML platform forecasting default probabilities and suggesting optimized recovery strategies.",
+    stack: ["Python", "Predictive Analytics", "Data Processing"],
+    image: "/loan-recovery.jpg",
+  },
+];
