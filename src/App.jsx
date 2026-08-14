@@ -36,8 +36,8 @@ import {
   SiFirebase,
 } from "react-icons/si";
 
-import heroWorkspaceImg from "./assets/images/hero-workspace.png";
-import profilePortraitImg from "./assets/images/profile-portrait.png";
+import heroWorkspaceImg from "./assets/images/hero-workspace.webp";
+import profilePortraitImg from "./assets/images/profile-portrait.webp";
 
 // ---------- Theme Context ---------- //
 const ThemeContext = createContext();
@@ -473,6 +473,7 @@ function HeroSection() {
         <img
           src={heroWorkspaceImg}
           alt="Workspace"
+          fetchpriority="high"
           className="absolute right-0 top-0 h-full w-3/5 object-cover object-center"
         />
       </div>
