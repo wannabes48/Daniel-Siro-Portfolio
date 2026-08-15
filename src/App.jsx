@@ -577,6 +577,30 @@ function AboutSection() {
   );
 }
 
+function CredlyBadges() {
+  useEffect(() => {
+    // Load the Credly script dynamically when this component mounts
+    const script = document.createElement("script");
+    script.src = "//cdn.credly.com/assets/utilities/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="882b1122-997d-4fb9-9467-34a6adb773ab" data-share-badge-host="https://www.credly.com"></div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2567608b-e418-486c-acfd-933aa3606d73" data-share-badge-host="https://www.credly.com"></div>
+      <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cafd9df4-5c37-4035-b999-934e8dd4ae11" data-share-badge-host="https://www.credly.com"></div>
+    </div>
+  );
+}
+
 function ResumeSection() {
   return (
     <section id="resume" className="relative min-h-screen themed-bg-primary">
@@ -673,11 +697,7 @@ function ResumeSection() {
             <h3 className="font-heading font-bold text-sm tracking-widest uppercase mt-12 mb-6 themed-text-primary">
               Certifications & Badges
             </h3>
-            <div className="flex flex-wrap gap-4">
-              <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="882b1122-997d-4fb9-9467-34a6adb773ab" data-share-badge-host="https://www.credly.com"></div>
-              <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="2567608b-e418-486c-acfd-933aa3606d73" data-share-badge-host="https://www.credly.com"></div>
-              <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="cafd9df4-5c37-4035-b999-934e8dd4ae11" data-share-badge-host="https://www.credly.com"></div>
-            </div>
+            <CredlyBadges />
           </div>
 
           {/* Column 3 */}
