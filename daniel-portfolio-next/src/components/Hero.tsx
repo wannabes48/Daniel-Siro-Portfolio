@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { heroFadeUp } from "@/lib/animations";
 
@@ -26,7 +26,7 @@ export function Hero() {
           custom={1}
           initial="hidden"
           animate="visible"
-          variants={heroFadeUp}
+          variants={heroFadeUp as Variants}
           className="text-[11px] uppercase font-semibold text-[var(--fg-muted)] mb-6"
           style={{ letterSpacing: "0.15em" }}
         >
@@ -37,7 +37,7 @@ export function Hero() {
           custom={2}
           initial="hidden"
           animate="visible"
-          variants={heroFadeUp}
+          variants={heroFadeUp as Variants}
           className="font-[800] text-[var(--fg)] leading-[1.1] mb-6"
           style={{
             fontSize: "clamp(40px, 6vw, 72px)",
@@ -51,14 +51,14 @@ export function Hero() {
           custom={3}
           initial="hidden"
           animate="visible"
-          variants={heroFadeUp}
+          variants={heroFadeUp as Variants}
           className="text-[15px] sm:text-[16px] text-[var(--fg-secondary)] max-w-xl mb-12 leading-relaxed"
         >
           I build robust, scalable applications across the stack—from high-performance Next.js 
           frontends to complex Django backends and Web3 smart contracts on Stellar.
         </motion.p>
 
-        <motion.div custom={4} initial="hidden" animate="visible" variants={heroFadeUp}>
+        <motion.div custom={4} initial="hidden" animate="visible" variants={heroFadeUp as Variants}>
           <Link
             href="#contact"
             className="inline-block bg-[var(--accent)] text-[var(--surface)] px-8 py-3.5 text-[14px] font-medium tracking-wide hover:bg-[var(--accent-hover)] transition-colors duration-150 rounded-none"
